@@ -1,4 +1,4 @@
-<?
+<?php
 
 if (!extension_loaded('openssl'))
   die ("PHP extension OpenSSL is not loaded.");
