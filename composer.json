@@ -1,0 +1,20 @@
+{
+  "name": "adamstipak/webpay-php",
+  "description": "Simple request builder for GP Webpay",
+  "keywords": ["webpay"],
+  "licence": ["MIT"],
+  "homepage": "https://github.com/newPOPE/webpay-php",
+  "authors": [
+    {
+      "name": "Adam Štipák",
+      "homepage": "http://newpope.org"
+    }, 
+    {
+      "name": "David Šebík",
+      "homepage": "https://github.com/sebik"
+    }
+  ],
+  "autoload": {
+    "files": ["src/request.php", "serc/response.php", "src/webpay.php"]
+  }
+}
