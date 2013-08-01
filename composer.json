@@ -15,6 +15,6 @@
     }
   ],
   "autoload": {
-    "files": ["src/request.php", "serc/response.php", "src/webpay.php"]
+    "files": ["src/request.php", "src/response.php"]
   }
 }
