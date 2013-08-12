@@ -12,6 +12,7 @@ class WebPayRequest
   var $webPayOrder;
   var $merchantOrder;
   var $amount;
+  var $depositFlag = FALSE;
 
   public function setPrivateKey ($file, $passphrase)
   {
@@ -47,6 +48,10 @@ class WebPayRequest
     $this->merchantNumber = $merchantNumber;
   }
 
+  public function setDepositFlag($flag) {
+    $this->depositFlag = (bool) $flag;
+  }
+
   public function getParams ()
   {
     $params = array ();
@@ -55,7 +60,7 @@ class WebPayRequest
     $params ['ORDERNUMBER'] = $this->webPayOrder;
     $params ['AMOUNT'] = $this->amount;
     $params ['CURRENCY'] = 203;
-    $params ['DEPOSITFLAG'] = 1;
+    $params ['DEPOSITFLAG'] = $this->depositFlag;
     $params ['MERORDERNUM'] = $this->merchantOrder;
     //$params ['MD'] = '';
     $params ['URL'] = $this->responseUrl;
