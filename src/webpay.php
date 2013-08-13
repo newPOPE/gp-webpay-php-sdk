@@ -60,7 +60,7 @@ class WebPayRequest
     $params ['ORDERNUMBER'] = $this->webPayOrder;
     $params ['AMOUNT'] = $this->amount;
     $params ['CURRENCY'] = 978;
-    $params ['DEPOSITFLAG'] = $this->depositFlag;
+    $params ['DEPOSITFLAG'] = (int) $this->depositFlag;
     $params ['MERORDERNUM'] = $this->merchantOrder;
     //$params ['MD'] = '';
     $params ['URL'] = $this->responseUrl;
