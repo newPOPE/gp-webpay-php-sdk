@@ -1,7 +1,8 @@
 {
   "name": "adamstipak/webpay-php",
-  "description": "Simple request builder for GP Webpay",
-  "keywords": ["webpay"],
+  "description": "GP Webpay API Wrapper",
+  "type": "library",
+  "keywords": ["webpay", "php"],
   "licence": ["MIT"],
   "homepage": "https://github.com/newPOPE/webpay-php",
   "authors": [
@@ -15,6 +16,6 @@
     }
   ],
   "autoload": {
-    "files": ["src/webpay.php"]
+    "psr-0": { "Webpay": "src/" }
   }
 }
