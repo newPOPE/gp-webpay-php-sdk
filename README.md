@@ -1,6 +1,6 @@
 ## Požadavek na platbu - sestavení odkazu
 
-```php
+```
   $request = new WebPayRequest ();
   $request->setPrivateKey ('private-key.pem', 'heslo');
   $request->setWebPayUrl ('https://test.3dsecure.gpwebpay.com/rb/order.do');
@@ -13,7 +13,8 @@
 ```
 
 ## Převzetí výsledku - zpracování platby
-```php
+
+```
   $response = new WebPayResponse ();
   $response->setPublicKey ('muzo.signing_test.pem');
   $response->setResponseParams ($_GET);
