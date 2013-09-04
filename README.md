@@ -1,4 +1,5 @@
 ## Požadavek na platbu - sestavení odkazu
+[![Build Status](https://travis-ci.org/newPOPE/webpay-php.png?branch=dev/2.0.0)](https://travis-ci.org/newPOPE/webpay-php)
 
 ```
   $request = new WebPayRequest ();
