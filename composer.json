@@ -17,5 +17,11 @@
   ],
   "autoload": {
     "psr-0": { "Webpay": "src/" }
+  },
+  "require": {
+    "ext-openssl": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "3.7.*"
   }
 }
