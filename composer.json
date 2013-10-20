@@ -9,10 +9,6 @@
     {
       "name": "Adam Štipák",
       "homepage": "http://newpope.org"
-    }, 
-    {
-      "name": "David Šebík",
-      "homepage": "https://github.com/sebik"
     }
   ],
   "autoload": {
