@@ -5,8 +5,15 @@ Full featured PHP API wrapper for GP Webpay payments.
 
 ### Actual code is under development now.
 
+## Installation
 
-### Setup
+The best way to install GP Webpay PHP API is using  [Composer](http://getcomposer.org/):
+
+```sh
+$ composer require adamstipak/webpay-php dev-dev/2.0.0
+```
+
+## Setup
 
 ```php
 
