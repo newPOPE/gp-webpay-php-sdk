@@ -3,7 +3,7 @@
   "description": "GP Webpay API Wrapper",
   "type": "library",
   "keywords": ["webpay", "php"],
-  "licence": "MIT",
+  "license": "MIT",
   "homepage": "https://github.com/newPOPE/webpay-php",
   "authors": [
     {
