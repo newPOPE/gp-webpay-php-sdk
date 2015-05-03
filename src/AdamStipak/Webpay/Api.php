@@ -45,9 +45,13 @@ class Api {
    * @throws Exception
    */
   public function verifyPaymentResponse(PaymentResponse $response) {
-    // verify digest
+    // verify digest & digest1
     try {
-      $this->signer->verify($response->getParams(), $response->getDigest());
+      $responseParams = $response->getParams();
+      $this->signer->verify($responseParams, $response->getDigest());
+
+      $responseParams['MERCHANTNUMBER'] = $this->merchantNumber;
+      $this->signer->verify($responseParams, $response->getDigest1());
     } catch (SignerException $e) {
       throw new Exception($e->getMessage(), $e->getCode(), $e);
     }

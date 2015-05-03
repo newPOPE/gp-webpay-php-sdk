@@ -14,7 +14,8 @@ class ApiTest extends \PHPUnit_Framework_TestCase {
           0,
           0,
           'resulttext',
-          'digest'
+          'digest',
+          'digest1'
         ]
       )
       ->setMethods(
@@ -37,9 +38,8 @@ class ApiTest extends \PHPUnit_Framework_TestCase {
       )
       ->getMock();
 
-    $signer->expects($this->once())
-      ->method('verify')
-      ->with($response->getParams(), $response->getDigest());
+    $signer->expects($this->exactly(2))
+      ->method('verify');
 
     $api = new Api(123456789, 'http://foo.bar', $signer);
 

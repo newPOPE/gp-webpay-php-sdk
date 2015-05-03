@@ -41,7 +41,8 @@ class PaymentResponseTest extends \PHPUnit_Framework_TestCase {
       $codes['prcode'],
       $codes['srcode'],
       'resultext',
-      'digest'
+      'digest',
+      'digest1'
     );
 
     $this->assertEquals($result, $response->hasError());
