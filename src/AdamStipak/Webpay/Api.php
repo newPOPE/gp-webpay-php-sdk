@@ -31,6 +31,7 @@ class Api {
   public function createPaymentRequestUrl(PaymentRequest $request) {
     // digest request
     $params = $request->getParams();
+    $request->setMerchantNumber($this->merchantNumber);
     $request->setDigest($this->signer->sign($params));
 
     // build request URL based on PaymentRequest

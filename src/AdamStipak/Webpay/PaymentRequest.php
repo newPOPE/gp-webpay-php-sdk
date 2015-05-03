@@ -23,9 +23,11 @@ class PaymentRequest {
     $this->params['CURRENCY'] = $currency;
     $this->params['DEPOSITFLAG'] = $depositFlag;
     $this->params['URL'] = $url;
+    $this->params['OPERATION'] = 'CREATE_ORDER';
   }
 
   /**
+   * @internal
    * @param string $digest
    */
   public function setDigest($digest) {
@@ -37,5 +39,13 @@ class PaymentRequest {
    */
   public function getParams() {
     return $this->params;
+  }
+
+  /**
+   * @internal
+   * @param $number
+   */
+  public function setMerchantNumber($number) {
+    $this->params['MERCHANTNUMBER'] = $number;
   }
 }
