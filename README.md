@@ -3,8 +3,6 @@
 
 Full featured PHP SDK for [GP Webpay payments](http://www.gpwebpay.cz).
 
-### Actual code is under development now.
-
 ## Installation
 
 The best way to install GP Webpay PHP SDK is using  [Composer](http://getcomposer.org/):
