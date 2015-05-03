@@ -1,6 +1,6 @@
 <?php
 
-namespace Webpay;
+namespace AdamStipak\Webpay;
 
 class PaymentRequest {
 

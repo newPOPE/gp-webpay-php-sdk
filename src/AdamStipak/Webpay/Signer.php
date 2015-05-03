@@ -1,6 +1,6 @@
 <?php
 
-namespace Webpay;
+namespace AdamStipak\Webpay;
 
 class Signer {
 
@@ -81,7 +81,7 @@ class Signer {
 
   /**
    * @return resource
-   * @throws Exception
+   * @throws SignerException
    */
   private function getPublicKeyResource() {
     if($this->publicKeyResource) {
@@ -95,7 +95,7 @@ class Signer {
     $cer = openssl_pkey_get_public($key);
 
     if (!($this->publicKeyResource = openssl_pkey_get_public($key))) {
-      throw new Exception("'{$this->publicKey}' is not valid PEM public key.");
+      throw new SignerException("'{$this->publicKey}' is not valid PEM public key.");
     }
 
     return $this->publicKeyResource;

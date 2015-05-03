@@ -1,12 +1,11 @@
 <?php
 
-use Webpay\Signer;
-use Webpay\SignerException;
+namespace AdamStipak\Webpay;
 
-class SignerTest extends PHPUnit_Framework_TestCase {
+class SignerTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @expectedException WebPay\SignerException
+   * @expectedException \AdamStipak\Webpay\SignerException
    */
   public function testConstructorWithInvalidPrivateKey() {
     $signer = new Signer(
@@ -17,7 +16,7 @@ class SignerTest extends PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @expectedException WebPay\SignerException
+   * @expectedException \AdamStipak\Webpay\SignerException
    */
   public function testConstructorWithInvalidPublicKey() {
     $signer = new Signer(
@@ -79,7 +78,7 @@ class SignerTest extends PHPUnit_Framework_TestCase {
   }
 
   /**
-   * @expectedException Webpay\SignerException
+   * @expectedException \AdamStipak\Webpay\SignerException
    */
   public function testVerifyWithInvalidDigest() {
     $params = array(
