@@ -40,13 +40,22 @@ class Api {
   }
 
   /**
-   * @param PaymentResponse $params
-   * @return bool
+   * @param PaymentResponse $response
+   * @throws Exception
    */
-  public function verifyPaymentResponse(PaymentResponse $params) {
+  public function verifyPaymentResponse(PaymentResponse $response) {
     // verify digest
+    try {
+      $this->signer->verify($response->getParams(), $response->getDigest());
+    } catch (SignerException $e) {
+      throw new Exception($e->getMessage(), $e->getCode(), $e);
+    }
+
     // verify PRCODE and SRCODE
-    // if OK return PaymentResponse
-    // if ERROR throw Exception
+    if (false !== $response->hasError()) {
+      throw new Exception("Response has an error.");
+    }
   }
 }
+
+class Exception extends \Exception {}
