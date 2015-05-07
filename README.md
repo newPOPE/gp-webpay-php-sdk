@@ -1,5 +1,5 @@
 # GP Webpay PHP SDK
-[![Build Status](https://travis-ci.org/newPOPE/webpay-php.png?branch=master)](https://travis-ci.org/newPOPE/webpay-php)
+[![Build Status](https://travis-ci.org/newPOPE/gp-webpay-php-sdk?branch=master)](https://travis-ci.org/newPOPE/webpay-php)
 
 Full featured PHP SDK for [GP Webpay payments](http://www.gpwebpay.cz).
 
