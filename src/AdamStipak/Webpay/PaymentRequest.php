@@ -18,12 +18,13 @@ class PaymentRequest {
    * @param string $url
    */
   public function __construct($orderNumber, $amount, $currency, $depositFlag, $url) {
+    $this->params['MERCHANTNUMBER'] = "";
+	$this->params['OPERATION'] = 'CREATE_ORDER';
     $this->params['ORDERNUMBER'] = $orderNumber;
     $this->params['AMOUNT'] = $amount * 100;
     $this->params['CURRENCY'] = $currency;
     $this->params['DEPOSITFLAG'] = $depositFlag;
     $this->params['URL'] = $url;
-    $this->params['OPERATION'] = 'CREATE_ORDER';
   }
 
   /**
