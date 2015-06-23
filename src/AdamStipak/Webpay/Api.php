@@ -29,15 +29,21 @@ class Api {
    * @return string
    */
   public function createPaymentRequestUrl(PaymentRequest $request) {
-    // digest request
+    // build request URL based on PaymentRequest
+    $paymentUrl = $this->webPayUrl . '?' . http_build_query($this->createPaymentParam($request));
+    return $paymentUrl;
+  }
+
+  /**
+   * @param \AdamStipak\Webpay\PaymentRequest $request
+   * @return array
+   */
+  public function createPaymentParam(PaymentRequest $request) {
+	// digest request
     $request->setMerchantNumber($this->merchantNumber);
     $params = $request->getParams();
     $request->setDigest($this->signer->sign($params));
-
-    // build request URL based on PaymentRequest
-    $paymentUrl = $this->webPayUrl . '?' . http_build_query($request->getParams());
-
-    return $paymentUrl;
+	return $request->getParams();
   }
 
   /**
