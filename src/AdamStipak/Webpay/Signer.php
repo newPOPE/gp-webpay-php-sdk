@@ -92,8 +92,6 @@ class Signer {
     $key = fread($fp, filesize($this->publicKey));
     fclose($fp);
 
-    $cer = openssl_pkey_get_public($key);
-
     if (!($this->publicKeyResource = openssl_pkey_get_public($key))) {
       throw new SignerException("'{$this->publicKey}' is not valid PEM public key.");
     }
