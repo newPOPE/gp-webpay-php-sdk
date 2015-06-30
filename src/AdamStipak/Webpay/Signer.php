@@ -74,7 +74,7 @@ class Signer {
 
     $ok = openssl_verify($data, $digest, $this->getPublicKeyResource());
 
-    if($ok !== 1) {
+    if ($ok !== 1) {
       throw new SignerException("Digest is not correct!");
     }
   }
@@ -84,15 +84,13 @@ class Signer {
    * @throws SignerException
    */
   private function getPublicKeyResource() {
-    if($this->publicKeyResource) {
+    if ($this->publicKeyResource) {
       return $this->publicKeyResource;
     }
 
     $fp = fopen($this->publicKey, "r");
     $key = fread($fp, filesize($this->publicKey));
     fclose($fp);
-
-    $cer = openssl_pkey_get_public($key);
 
     if (!($this->publicKeyResource = openssl_pkey_get_public($key))) {
       throw new SignerException("'{$this->publicKey}' is not valid PEM public key.");
