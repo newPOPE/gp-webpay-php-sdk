@@ -19,15 +19,16 @@ class PaymentRequest {
    */
   public function __construct($orderNumber, $amount, $currency, $depositFlag, $url, $merOrderNumber = NULL) {
     $this->params['MERCHANTNUMBER'] = "";
-	$this->params['OPERATION'] = 'CREATE_ORDER';
+    $this->params['OPERATION'] = 'CREATE_ORDER';
     $this->params['ORDERNUMBER'] = $orderNumber;
     $this->params['AMOUNT'] = $amount * 100;
     $this->params['CURRENCY'] = $currency;
     $this->params['DEPOSITFLAG'] = $depositFlag;
-	if($merOrderNumber)
-	{
-		$this->params['MERORDERNUM'] = $merOrderNumber;
-	}
+
+    if ($merOrderNumber) {
+      $this->params['MERORDERNUM'] = $merOrderNumber;
+    }
+
     $this->params['URL'] = $url;
   }
 

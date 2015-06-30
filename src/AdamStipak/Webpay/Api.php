@@ -31,6 +31,7 @@ class Api {
   public function createPaymentRequestUrl(PaymentRequest $request) {
     // build request URL based on PaymentRequest
     $paymentUrl = $this->webPayUrl . '?' . http_build_query($this->createPaymentParam($request));
+
     return $paymentUrl;
   }
 
@@ -39,11 +40,12 @@ class Api {
    * @return array
    */
   public function createPaymentParam(PaymentRequest $request) {
-	// digest request
+    // digest request
     $request->setMerchantNumber($this->merchantNumber);
     $params = $request->getParams();
     $request->setDigest($this->signer->sign($params));
-	return $request->getParams();
+
+    return $request->getParams();
   }
 
   /**
@@ -69,4 +71,6 @@ class Api {
   }
 }
 
-class Exception extends \Exception {}
+class Exception extends \Exception {
+
+}
