@@ -51,6 +51,7 @@ class Api {
   /**
    * @param PaymentResponse $response
    * @throws Exception
+   * @throws PaymentResponseException
    */
   public function verifyPaymentResponse(PaymentResponse $response) {
     // verify digest & digest1
@@ -59,6 +60,7 @@ class Api {
       $this->signer->verify($responseParams, $response->getDigest());
 
       $responseParams['MERCHANTNUMBER'] = $this->merchantNumber;
+
       $this->signer->verify($responseParams, $response->getDigest1());
     } catch (SignerException $e) {
       throw new Exception($e->getMessage(), $e->getCode(), $e);
@@ -66,7 +68,11 @@ class Api {
 
     // verify PRCODE and SRCODE
     if (false !== $response->hasError()) {
-      throw new Exception("Response has an error.");
+      throw new PaymentResponseException(
+        $response->getParams()['prcode'],
+        $response->getParams()['srcode'],
+        "Response has an error."
+      );
     }
   }
 }

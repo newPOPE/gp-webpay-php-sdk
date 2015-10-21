@@ -54,8 +54,11 @@ $response = new PaymentResponse(...); // fill response with response parameters 
 try {
   $api->verifyPaymentResponse($response);
 } 
+catch (PaymentResponseException $e) {
+  // PaymentResponseException has $prCode, $srCode for properties for logging GP Webpay response error codes.
+}
 catch (Exception $e) {
-  // Digest is not correct or some error occured (PRCODE, SRCODE is not 0).
+  // Digest is not correct.
 }
 
 ```
