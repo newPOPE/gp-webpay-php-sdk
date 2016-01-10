@@ -6,6 +6,11 @@ class PaymentRequest {
 
   const EUR = 978;
   const CZK = 203;
+  const GBP = 826;
+  const HUF = 348;
+  const PLN = 985;
+  const RUB = 643;
+  const USD = 840;
 
   /** @var array */
   private $params;
