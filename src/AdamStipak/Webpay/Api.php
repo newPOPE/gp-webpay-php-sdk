@@ -76,7 +76,3 @@ class Api {
     }
   }
 }
-
-class Exception extends \Exception {
-
-}
