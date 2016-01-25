@@ -2,7 +2,7 @@
 
 namespace AdamStipak\Webpay;
 
-use Exception;
+use AdamStipak\Webpay\Exception;
 
 class PaymentResponse {
 
