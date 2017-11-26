@@ -56,6 +56,7 @@ class Signer {
    * @return string
    */
   public function sign(array $params) {
+    $this->normalizeParams($params);
     $digestText = implode('|', $params);
     openssl_sign($digestText, $digest, $this->getPrivateKeyResource());
     $digest = base64_encode($digest);
@@ -69,6 +70,7 @@ class Signer {
    * @throws SignerException
    */
   public function verify(array $params, $digest) {
+    $params = $this->normalizeParams($params);
     $data = implode('|', $params);
     $digest = base64_decode($digest);
 
@@ -97,5 +99,21 @@ class Signer {
     }
 
     return $this->publicKeyResource;
+  }
+
+  /**
+   * Normalize array of parameters for valid use in implode function
+   *
+   * @param array $params
+   * @return array
+   */
+  private function normalizeParams($params) {
+    foreach ($params as $key => $param) {
+      if ($param === false) {
+        $params[$key] = 0;
+      }
+    }
+
+    return $params;
   }
 }
