@@ -56,7 +56,7 @@ class Signer {
    * @return string
    */
   public function sign(array $params) {
-    $this->normalizeParams($params);
+    $params = $this->normalizeParams($params);
     $digestText = implode('|', $params);
     openssl_sign($digestText, $digest, $this->getPrivateKeyResource());
     $digest = base64_encode($digest);
