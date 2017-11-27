@@ -22,7 +22,7 @@ class Api {
    * @param $privateKeyPassword
    * @param $webPayUrl
    */
-  public function __construct($merchantNumber, $privateKey, $privateKeyPassword, $webPayUrl) {
+  public function __construct ($merchantNumber, $privateKey, $privateKeyPassword, $webPayUrl) {
     $this->merchantNumber = $merchantNumber;
     $this->privateKey = $privateKey;
     $this->privateKeyPassword = $privateKeyPassword;
@@ -33,7 +33,7 @@ class Api {
    * @param PaymentRequest $request
    * @return string
    */
-  public function createPaymentRequestUrl(PaymentRequest $request) {
+  public function createPaymentRequestUrl (PaymentRequest $request) {
     // digest request
     // build request URL based on PaymentRequest
     // return URL
@@ -43,14 +43,14 @@ class Api {
    * @param PaymentResponseParams $params
    * @return PaymentResponse
    */
-  public function verifyPayment(PaymentResponseParams $params) {
+  public function verifyPayment (PaymentResponseParams $params) {
     // verify digest
     // verify PRCODE and SRCODE
     // if OK return PaymentResponse
     // if ERROR throw Exception
   }
 
-  public function approveReversal(ApproveReversalRequest $request) {
+  public function approveReversal (ApproveReversalRequest $request) {
     // digest request
     // call SOAP API
     // verify response DIGEST
@@ -59,35 +59,35 @@ class Api {
     // if ERROR throw Exception
   }
 
-  public function deposit(DepositRequest $request) {
+  public function deposit (DepositRequest $request) {
     // same flow as approveReversal
   }
 
-  public function depositReversal(DepositReversal $request) {
+  public function depositReversal (DepositReversal $request) {
     // same flow as approveReversal
   }
 
-  public function credit(CreditRequest $request) {
+  public function credit (CreditRequest $request) {
     // same flow as approveReversal
   }
 
-  public function creditReversal(CreditReversal $request) {
+  public function creditReversal (CreditReversal $request) {
     // same flow as approveReversal
   }
 
-  public function orderClose(OrderCloseRequest $request) {
+  public function orderClose (OrderCloseRequest $request) {
     // same flow as approveReversal
   }
 
-  public function delete(DeleteRequest $request) {
+  public function delete (DeleteRequest $request) {
     // same flow as approveReversal
   }
 
-  public function queryOrderState(QueryOrderStateRequest $request) {
+  public function queryOrderState (QueryOrderStateRequest $request) {
     // same flow as approveReversal
   }
 
-  public function batchClose(BatchCloseRequest $request) {
+  public function batchClose (BatchCloseRequest $request) {
     // same flow as approveReversal
   }
 }

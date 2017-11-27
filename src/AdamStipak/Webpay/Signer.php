@@ -19,7 +19,7 @@ class Signer {
   /** @var resource */
   private $publicKeyResource;
 
-  public function __construct($privateKey, $privateKeyPassword, $publicKey) {
+  public function __construct ($privateKey, $privateKeyPassword, $publicKey) {
     if (!file_exists($privateKey) || !is_readable($privateKey)) {
       throw new SignerException("Private key ({$privateKey}) not exists or not readable!");
     }
@@ -37,7 +37,7 @@ class Signer {
    * @return resource
    * @throws SignerException
    */
-  private function getPrivateKeyResource() {
+  private function getPrivateKeyResource () {
     if ($this->privateKeyResource) {
       return $this->privateKeyResource;
     }
@@ -55,7 +55,7 @@ class Signer {
    * @param array $params
    * @return string
    */
-  public function sign(array $params) {
+  public function sign (array $params) {
     $params = $this->normalizeParams($params);
     $digestText = implode('|', $params);
     openssl_sign($digestText, $digest, $this->getPrivateKeyResource());
@@ -69,7 +69,7 @@ class Signer {
    * @param string $digest
    * @throws SignerException
    */
-  public function verify(array $params, $digest) {
+  public function verify (array $params, $digest) {
     $params = $this->normalizeParams($params);
     $data = implode('|', $params);
     $digest = base64_decode($digest);
@@ -85,7 +85,7 @@ class Signer {
    * @return resource
    * @throws SignerException
    */
-  private function getPublicKeyResource() {
+  private function getPublicKeyResource () {
     if ($this->publicKeyResource) {
       return $this->publicKeyResource;
     }

@@ -2,12 +2,14 @@
 
 namespace AdamStipak\Webpay;
 
-class SignerTest extends \PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
+
+class SignerTest extends TestCase {
 
   /**
    * @expectedException \AdamStipak\Webpay\SignerException
    */
-  public function testConstructorWithInvalidPrivateKey() {
+  public function testConstructorWithInvalidPrivateKey () {
     $signer = new Signer(
       __DIR__ . '/keys/not-exists-key.pem',
       'changeit',
@@ -18,7 +20,7 @@ class SignerTest extends \PHPUnit_Framework_TestCase {
   /**
    * @expectedException \AdamStipak\Webpay\SignerException
    */
-  public function testConstructorWithInvalidPublicKey() {
+  public function testConstructorWithInvalidPublicKey () {
     $signer = new Signer(
       __DIR__ . '/keys/test_key.pem',
       'changeit',
@@ -26,16 +28,16 @@ class SignerTest extends \PHPUnit_Framework_TestCase {
     );
   }
 
-  public function testSign() {
+  public function testSign () {
     $privateKeyResource = openssl_pkey_get_private(
       file_get_contents(__DIR__ . '/keys/test_key.pem'),
       'changeit'
     );
 
-    $params = array(
+    $params = [
       'param1' => 'foo',
       'param2' => 'bar',
-    );
+    ];
 
     $digestText = implode('|', $params);
     openssl_sign($digestText, $expectedDigest, $privateKeyResource);
@@ -53,16 +55,16 @@ class SignerTest extends \PHPUnit_Framework_TestCase {
     );
   }
 
-  public function testVerify() {
+  public function testVerify () {
     $privateKeyResource = openssl_pkey_get_private(
       file_get_contents(__DIR__ . '/keys/test_key.pem'),
       'changeit'
     );
 
-    $params = array(
+    $params = [
       'param1' => 'foo',
       'param2' => 'bar',
-    );
+    ];
 
     $digestText = implode('|', $params);
     openssl_sign($digestText, $expectedDigest, $privateKeyResource);
@@ -80,11 +82,11 @@ class SignerTest extends \PHPUnit_Framework_TestCase {
   /**
    * @expectedException \AdamStipak\Webpay\SignerException
    */
-  public function testVerifyWithInvalidDigest() {
-    $params = array(
+  public function testVerifyWithInvalidDigest () {
+    $params = [
       'param1' => 'foo',
       'param2' => 'bar',
-    );
+    ];
 
     $signer = new Signer(
       __DIR__ . '/keys/test_key.pem',
