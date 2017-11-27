@@ -70,7 +70,6 @@ class Signer {
    * @throws SignerException
    */
   public function verify (array $params, $digest) {
-    $params = $this->normalizeParams($params);
     $data = implode('|', $params);
     $digest = base64_decode($digest);
 
