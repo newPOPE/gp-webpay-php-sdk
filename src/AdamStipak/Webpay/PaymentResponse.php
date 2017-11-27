@@ -23,7 +23,7 @@ class PaymentResponse {
    * @param string $digest
    * @param string $digest1
    */
-  public function __construct (string $operation, string $ordernumber, string $merordernum, int $prcode, int $srcode, string $resulttext, string $digest, string $digest1) {
+  public function __construct (string $operation, string $ordernumber, string $merordernum = null, int $prcode, int $srcode, string $resulttext, string $digest, string $digest1) {
     $this->params['operation'] = $operation;
     $this->params['ordermumber'] = $ordernumber;
     if ($merordernum !== null) {
