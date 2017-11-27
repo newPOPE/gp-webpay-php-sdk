@@ -63,6 +63,20 @@ catch (Exception $e) {
 
 ```
  
+##Development
+
+GP Webpay PHP SDK is developed in [Docker](https://docker.com) container via `docker-compose` command.
+
+Example:  
+```sh
+$ docker-compose run --rm default install  # install deps via composer
+$ docker-compose run --rm default  # runs tests in container
+```
+
+Attach to container:  
+```sh
+$ docker-compose run --rm default bash # runs bash in container and attach tty
+```
  
  
  

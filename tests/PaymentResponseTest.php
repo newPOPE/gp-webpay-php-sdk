@@ -2,30 +2,32 @@
 
 namespace AdamStipak\Webpay;
 
-class PaymentResponseTest extends \PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
 
-  public function errorCodesProvider() {
+class PaymentResponseTest extends TestCase {
+
+  public function errorCodesProvider () {
     return [
       [
         [
           'prcode' => 0,
           'srcode' => 0,
         ],
-        false
+        false,
       ],
       [
         [
           'prcode' => 97,
           'srcode' => 0,
         ],
-        true
+        true,
       ],
       [
         [
           'prcode' => 12,
           'srcode' => 32,
         ],
-        true
+        true,
       ],
     ];
   }
@@ -33,7 +35,7 @@ class PaymentResponseTest extends \PHPUnit_Framework_TestCase {
   /**
    * @dataProvider errorCodesProvider
    */
-  public function testHasError($codes, $result) {
+  public function testHasError ($codes, $result) {
     $response = new PaymentResponse(
       'operation',
       'ordernumber',

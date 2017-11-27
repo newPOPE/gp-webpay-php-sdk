@@ -18,7 +18,7 @@ class Api {
    * @param $webPayUrl
    * @param Signer $signer
    */
-  public function __construct($merchantNumber, $webPayUrl, Signer $signer) {
+  public function __construct ($merchantNumber, $webPayUrl, Signer $signer) {
     $this->merchantNumber = $merchantNumber;
     $this->webPayUrl = $webPayUrl;
     $this->signer = $signer;
@@ -28,7 +28,7 @@ class Api {
    * @param PaymentRequest $request
    * @return string
    */
-  public function createPaymentRequestUrl(PaymentRequest $request) {
+  public function createPaymentRequestUrl (PaymentRequest $request) {
     // build request URL based on PaymentRequest
     $paymentUrl = $this->webPayUrl . '?' . http_build_query($this->createPaymentParam($request));
 
@@ -39,7 +39,7 @@ class Api {
    * @param \AdamStipak\Webpay\PaymentRequest $request
    * @return array
    */
-  public function createPaymentParam(PaymentRequest $request) {
+  public function createPaymentParam (PaymentRequest $request) {
     // digest request
     $request->setMerchantNumber($this->merchantNumber);
     $params = $request->getParams();
@@ -53,7 +53,7 @@ class Api {
    * @throws Exception
    * @throws PaymentResponseException
    */
-  public function verifyPaymentResponse(PaymentResponse $response) {
+  public function verifyPaymentResponse (PaymentResponse $response) {
     // verify digest & digest1
     try {
       $responseParams = $response->getParams();
@@ -62,7 +62,8 @@ class Api {
       $responseParams['MERCHANTNUMBER'] = $this->merchantNumber;
 
       $this->signer->verify($responseParams, $response->getDigest1());
-    } catch (SignerException $e) {
+    }
+    catch (SignerException $e) {
       throw new Exception($e->getMessage(), $e->getCode(), $e);
     }
 

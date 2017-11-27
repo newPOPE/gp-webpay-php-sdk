@@ -2,9 +2,11 @@
 
 namespace AdamStipak\Webpay;
 
-class ApiTest extends \PHPUnit_Framework_TestCase {
+use PHPUnit\Framework\TestCase;
 
-  public function testVerifyPaymentResponse() {
+class ApiTest extends TestCase {
+
+  public function testVerifyPaymentResponse () {
     $response = $this->getMockBuilder('AdamStipak\Webpay\PaymentResponse')
       ->setConstructorArgs(
         [
@@ -15,12 +17,12 @@ class ApiTest extends \PHPUnit_Framework_TestCase {
           0,
           'resulttext',
           'digest',
-          'digest1'
+          'digest1',
         ]
       )
       ->setMethods(
         [
-          'hasError'
+          'hasError',
         ]
       )
       ->getMock();
@@ -33,7 +35,7 @@ class ApiTest extends \PHPUnit_Framework_TestCase {
       ->disableOriginalConstructor()
       ->setMethods(
         [
-          'verify'
+          'verify',
         ]
       )
       ->getMock();
@@ -49,7 +51,7 @@ class ApiTest extends \PHPUnit_Framework_TestCase {
   /**
    * @expectedException \AdamStipak\Webpay\PaymentResponseException
    */
-  public function testPaymentHasErrorInVerifyPaymentResponse() {
+  public function testPaymentHasErrorInVerifyPaymentResponse () {
     $merchantNumber = 123456789;
     $params = [
       'OPERATION'      => 'operation',
@@ -86,7 +88,7 @@ class ApiTest extends \PHPUnit_Framework_TestCase {
     $api->verifyPaymentResponse($response);
   }
 
-  public function testCreatePaymentRequestUr() {
+  public function testCreatePaymentRequestUr () {
     $this->markTestSkipped("Implement"); // move test from PaymentRequestUrlTest
   }
 

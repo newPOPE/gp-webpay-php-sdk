@@ -18,6 +18,6 @@
     "ext-openssl": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "4.*"
+    "phpunit/phpunit": "6.4.*"
   }
 }

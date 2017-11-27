@@ -22,7 +22,7 @@ class PaymentRequest {
    * @param int $depositFlag
    * @param string $url
    */
-  public function __construct($orderNumber, $amount, $currency, $depositFlag, $url, $merOrderNumber = NULL) {
+  public function __construct ($orderNumber, $amount, $currency, $depositFlag, $url, $merOrderNumber = null) {
     $this->params['MERCHANTNUMBER'] = "";
     $this->params['OPERATION'] = 'CREATE_ORDER';
     $this->params['ORDERNUMBER'] = $orderNumber;
@@ -41,14 +41,14 @@ class PaymentRequest {
    * @internal
    * @param string $digest
    */
-  public function setDigest($digest) {
+  public function setDigest ($digest) {
     $this->params['DIGEST'] = $digest;
   }
 
   /**
    * @return array
    */
-  public function getParams() {
+  public function getParams () {
     return $this->params;
   }
 
@@ -56,7 +56,7 @@ class PaymentRequest {
    * @internal
    * @param $number
    */
-  public function setMerchantNumber($number) {
+  public function setMerchantNumber ($number) {
     $this->params['MERCHANTNUMBER'] = $number;
   }
 }
