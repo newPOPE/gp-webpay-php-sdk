@@ -49,6 +49,12 @@ class PaymentRequest {
    * @return array
    */
   public function getParams () {
+    foreach ($this->params as $key => $param) {
+      if ($param === false) {
+        $this->params[$key] = 0;
+      }
+    }
+
     return $this->params;
   }
 
