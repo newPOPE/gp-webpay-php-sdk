@@ -13,7 +13,7 @@ class PaymentRequest {
   const USD = 840;
 
   /** @var array */
-  private $params;
+  private $params = [];
 
   /**
    * @param int $orderNumber
@@ -21,8 +21,9 @@ class PaymentRequest {
    * @param string $currency
    * @param int $depositFlag
    * @param string $url
+   * @param string|null $merOrderNumber
    */
-  public function __construct ($orderNumber, $amount, $currency, $depositFlag, $url, $merOrderNumber = null) {
+  public function __construct (int $orderNumber, float $amount, string $currency, int $depositFlag, string $url, string $merOrderNumber = null) {
     $this->params['MERCHANTNUMBER'] = "";
     $this->params['OPERATION'] = 'CREATE_ORDER';
     $this->params['ORDERNUMBER'] = $orderNumber;
@@ -48,13 +49,7 @@ class PaymentRequest {
   /**
    * @return array
    */
-  public function getParams () {
-    foreach ($this->params as $key => $param) {
-      if ($param === false) {
-        $this->params[$key] = 0;
-      }
-    }
-
+  public function getParams (): array {
     return $this->params;
   }
 

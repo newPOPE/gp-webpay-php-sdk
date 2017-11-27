@@ -15,7 +15,7 @@
     "psr-0": { "AdamStipak\\Webpay": "src/" }
   },
   "require": {
-    "php": "^7.0",
+    "php": "7.*",
     "ext-openssl": "*"
   },
   "require-dev": {
