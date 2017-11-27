@@ -18,7 +18,7 @@ class Api {
    * @param $webPayUrl
    * @param Signer $signer
    */
-  public function __construct ($merchantNumber, $webPayUrl, Signer $signer) {
+  public function __construct (string $merchantNumber, string $webPayUrl, Signer $signer) {
     $this->merchantNumber = $merchantNumber;
     $this->webPayUrl = $webPayUrl;
     $this->signer = $signer;
@@ -28,7 +28,7 @@ class Api {
    * @param PaymentRequest $request
    * @return string
    */
-  public function createPaymentRequestUrl (PaymentRequest $request) {
+  public function createPaymentRequestUrl (PaymentRequest $request): string {
     // build request URL based on PaymentRequest
     $paymentUrl = $this->webPayUrl . '?' . http_build_query($this->createPaymentParam($request));
 
@@ -39,7 +39,7 @@ class Api {
    * @param \AdamStipak\Webpay\PaymentRequest $request
    * @return array
    */
-  public function createPaymentParam (PaymentRequest $request) {
+  public function createPaymentParam (PaymentRequest $request): array {
     // digest request
     $request->setMerchantNumber($this->merchantNumber);
     $params = $request->getParams();
