@@ -28,7 +28,7 @@ class PaymentRequest {
     $this->params['OPERATION'] = 'CREATE_ORDER';
     $this->params['ORDERNUMBER'] = $orderNumber;
     $this->params['AMOUNT'] = $amount * 100;
-    $this->params['CURRENCY'] = $currency;
+    $this->params['CURRENCY'] = constant('self::'. $currency);
     $this->params['DEPOSITFLAG'] = $depositFlag;
 
     if ($merOrderNumber) {
