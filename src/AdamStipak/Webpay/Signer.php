@@ -66,6 +66,7 @@ class Signer {
   /**
    * @param array $params
    * @param string $digest
+   * @return bool
    * @throws SignerException
    */
   public function verify (array $params, $digest) {
@@ -77,6 +78,8 @@ class Signer {
     if ($ok !== 1) {
       throw new SignerException("Digest is not correct!");
     }
+
+    return true;
   }
 
   /**

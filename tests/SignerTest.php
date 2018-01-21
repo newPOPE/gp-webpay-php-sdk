@@ -76,7 +76,7 @@ class SignerTest extends TestCase {
       __DIR__ . '/keys/test_cert.pem'
     );
 
-    $signer->verify($params, $digest);
+    $this->assertTrue($signer->verify($params, $digest));
   }
 
   /**
