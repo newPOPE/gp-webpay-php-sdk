@@ -72,12 +72,11 @@ class PaymentRequest {
   }
   
   /**
-   * Add Custom parameter to request fields
+   * Add Description parameter to request fields
    * 
-   * @param string $field eg DESCRIPTION
-   * @param mixed  $value field value
+   * @param string  $value field value
    */
-  public function setCustomParam($field,$value){
+  public function setDescription($value){
     $this->params[$field] = $value;
   }
 }
