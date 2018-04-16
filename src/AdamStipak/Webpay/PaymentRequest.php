@@ -77,6 +77,6 @@ class PaymentRequest {
    * @param string  $value field value
    */
   public function setDescription($value){
-    $this->params[$field] = $value;
+    $this->params['DESCRIPTION'] = $value;
   }
 }
