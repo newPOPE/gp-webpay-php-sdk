@@ -15,6 +15,19 @@ class PaymentRequest {
   const RUB = 643;
   const USD = 840;
 
+  const PM_CRD = "CRD"; // credit/debit card
+  const PM_MCM = "MCM"; // MasterCard Mobile
+  const PM_MPS = "MPS"; // MasterPass
+  const PM_GPAY = "GPAY"; // GooglePay
+
+  /** @var array */
+  private $validPayMethods = [
+    self::PM_CRD,
+    self::PM_MCM,
+    self::PM_MPS,
+    self::PM_GPAY,
+  ];
+
   /** @var array */
   private $params = [];
 
@@ -78,5 +91,48 @@ class PaymentRequest {
    */
   public function setDescription($value){
     $this->params['DESCRIPTION'] = $value;
+  }
+
+  /**
+   * Set preferred payment method
+   *
+   * @param string $method
+   */
+  public function setPayMethod(string $method): void {
+    if($this->isValidPayMethod($method)) {
+      $this->params['PAYMETHOD'] = $method;
+    }
+  }
+
+  /**
+   * Set disabled payment method for current request
+   *
+   * @param string $method
+   */
+  public function disablePayMethod(string $method): void {
+    if($this->isValidPayMethod($method)) {
+      $this->params['DISABLEPAYMETHOD'] = $method;
+    }
+  }
+
+  /**
+   * Set allowed payment methods for current request
+   *
+   * @param array $methods
+   */
+  public function allowedPayMethods(array $methods): void {
+    if(!empty($validMethods = array_filter($methods, [$this, "isValidPayMethod"]))) {
+      $this->params['PAYMETHODS'] = implode(",", $validMethods);
+    }
+  }
+
+    /**
+     * Validate pay method identificator
+     *
+     * @param string $payMethod
+     * @return bool
+     */
+  private function isValidPayMethod(string $payMethod): bool {
+    return in_array($payMethod, $this->validPayMethods, true);
   }
 }
