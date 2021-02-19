@@ -6,10 +6,8 @@ use PHPUnit\Framework\TestCase;
 
 class SignerTest extends TestCase {
 
-  /**
-   * @expectedException \AdamStipak\Webpay\SignerException
-   */
   public function testConstructorWithInvalidPrivateKey () {
+    $this->expectException(SignerException::class);
     $signer = new Signer(
       __DIR__ . '/keys/not-exists-key.pem',
       'changeit',
@@ -17,10 +15,8 @@ class SignerTest extends TestCase {
     );
   }
 
-  /**
-   * @expectedException \AdamStipak\Webpay\SignerException
-   */
   public function testConstructorWithInvalidPublicKey () {
+    $this->expectException(\AdamStipak\Webpay\SignerException::class);
     $signer = new Signer(
       __DIR__ . '/keys/test_key.pem',
       'changeit',
@@ -79,10 +75,8 @@ class SignerTest extends TestCase {
     $this->assertTrue($signer->verify($params, $digest));
   }
 
-  /**
-   * @expectedException \AdamStipak\Webpay\SignerException
-   */
   public function testVerifyWithInvalidDigest () {
+    $this->expectException(SignerException::class);
     $params = [
       'param1' => 'foo',
       'param2' => 'bar',

@@ -48,10 +48,8 @@ class ApiTest extends TestCase {
     $api->verifyPaymentResponse($response);
   }
 
-  /**
-   * @expectedException \AdamStipak\Webpay\PaymentResponseException
-   */
   public function testPaymentHasErrorInVerifyPaymentResponse () {
+    $this->expectException(PaymentResponseException::class);
     $merchantNumber = 123456789;
     $params = [
       'OPERATION'      => 'operation',
