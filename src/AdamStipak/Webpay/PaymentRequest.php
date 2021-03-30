@@ -27,8 +27,9 @@ class PaymentRequest {
    * @param int         $depositFlag    Request Indicates whether the payment is to be paid automatically. Allowed values: 0 = no immediate payment required 1 = payment is required
    * @param string      $url            Full Merchant URL. A result will be sent to this address  request. The result is forwarded over customer browser    
    * @param string|null $merOrderNumber Order Number. In case it is not specified, it will be used  value $orderNumber It will appear on the bank statement.
+   * @param string|null $md Any merchant data.
    */
-  public function __construct (int $orderNumber, float $amount, int $currency, int $depositFlag, string $url, string $merOrderNumber = null) {
+  public function __construct (int $orderNumber, float $amount, int $currency, int $depositFlag, string $url, string $merOrderNumber = null, string $md = null) {
     $this->params['MERCHANTNUMBER'] = "";
     $this->params['OPERATION'] = 'CREATE_ORDER';
     $this->params['ORDERNUMBER'] = $orderNumber;
@@ -41,6 +42,10 @@ class PaymentRequest {
     }
 
     $this->params['URL'] = $url;
+
+    if ($md !== null) {
+      $this->params['MD'] = $md;
+    }
   }
 
   /**
