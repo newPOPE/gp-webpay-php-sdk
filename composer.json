@@ -13,7 +13,7 @@
     }
   ],
   "autoload": {
-    "psr-0": { "AdamStipak\\Webpay": "src/" }
+    "psr-4": { "AdamStipak\\Webpay\\": "src/AdamStipak/Webpay" }
   },
   "require": {
     "php": "~7.4 || ~8.0",
