@@ -1,4 +1,3 @@
-
 {
   "name": "adamstipak/webpay-php",
   "description": "GP Webpay API Wrapper",
@@ -17,7 +16,9 @@
   },
   "require": {
     "php": "~7.4 || ~8.0",
-    "ext-openssl": "*"
+    "ext-openssl": "*",
+    "nette/schema": "^1.2",
+    "spatie/array-to-xml": "^2.16"
   },
   "require-dev": {
     "phpunit/phpunit": "~9.5"
