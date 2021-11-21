@@ -10,8 +10,7 @@ class AddInfoTest extends TestCase {
     $info = AddInfo::createWithMinimalConfig();
 
     $xml = '<?xml version="1.0"?>
-<additionalInfoRequest xmlns="http://gpe.cz/gpwebpay/additionalInfo/request" version="4.0"/>
-';
+<additionalInfoRequest xmlns="http://gpe.cz/gpwebpay/additionalInfo/request" version="4.0"/>';
     $infoXml = $info->toXml();
     $document = new \DOMDocument();
     $document->loadXML($xml);
