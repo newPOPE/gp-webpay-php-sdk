@@ -40,6 +40,21 @@ class AddInfo {
   }
 
   public function toXml (): string {
-    return ArrayToXml::convert($this->values, 'additionalInfoRequest');
+    return ArrayToXml::convert(
+      $this->values, [
+        'rootElementName' => 'additionalInfoRequest',
+        '_attributes'     => [
+          'xmlns' => "http://gpe.cz/gpwebpay/additionalInfo/request",
+        ],
+      ]
+    );
+  }
+
+  public static function createWithMinimalConfig (string $version = '4.0'): self {
+    return new self ([
+      '_attributes' => [
+        'version' => $version,
+      ],
+    ]);
   }
 }

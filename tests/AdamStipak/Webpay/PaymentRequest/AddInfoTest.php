@@ -7,16 +7,16 @@ use PHPUnit\Framework\TestCase;
 class AddInfoTest extends TestCase {
 
   public function testMinimalValidSchema () {
-    $info = new AddInfo([
-      '_attributes' => [
-        'version' => '1.0',
-      ],
-    ]);
+    $info = AddInfo::createWithMinimalConfig();
 
     $xml = '<?xml version="1.0"?>
-<additionalInfoRequest version="1.0"/>
+<additionalInfoRequest xmlns="http://gpe.cz/gpwebpay/additionalInfo/request" version="4.0"/>
 ';
-    $this->assertEquals($xml, $info->toXml());
+    $infoXml = $info->toXml();
+    $document = new \DOMDocument();
+    $document->loadXML($xml);
+    $this->assertEquals($xml, $infoXml);
+    $this->assertTrue($document->schemaValidate(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.4.xsd'));
   }
 
   public function testMinimalInvalidSchema () {

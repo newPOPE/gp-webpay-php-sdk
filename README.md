@@ -40,11 +40,20 @@ $api = new \AdamStipak\Webpay\Api(
  $url = $api->createPaymentRequestUrl($request); // $api instance of \AdamStipak\Webpay\Api
  
  // use $url as you want. In most cases for redirecting to GP Webpay.
- 
  ```
+
+#### ADDINFO parameter
+
+```php
+// for minimal setup you can use
+use \AdamStipak\Webpay\PaymentRequest;
+use AdamStipak\Webpay\PaymentRequest\AddInfo;
  
+$request = new PaymentRequest(..., AddInfo::createWithMinimalConfig());
+```
+
 ### Verify payment response
- 
+
 ```php
 use \AdamStipak\Webpay\PaymentResponse;
 use \AdamStipak\Webpay\Exception;

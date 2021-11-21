@@ -57,6 +57,7 @@ class PaymentRequest {
     if ($md !== null) {
       $this->params['MD'] = $md;
     }
+
     if($addInfo !== null) {
       $this->params['ADDINFO'] = $addInfo->toXml();
     }

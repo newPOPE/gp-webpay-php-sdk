@@ -21,6 +21,7 @@
     "spatie/array-to-xml": "^2.16"
   },
   "require-dev": {
+    "ext-dom": "*",
     "phpunit/phpunit": "~9.5"
   }
 }
