@@ -19,16 +19,21 @@ class AddInfo {
   public function __construct (string $schema, array $values) {
     $this->schema = $schema;
     $this->values = $values;
-    $this->validate($values);
+    $this->validate();
   }
 
-  private function validate (array $values) {
+  private function validate () {
     $dom = new \DOMDocument;
     $dom->loadXML($this->toXml());
 
     libxml_use_internal_errors(true);
     if (!$dom->schemaValidateSource($this->schema)) {
-      throw new AddInfoException("XML output cannot be validate using the schema.");
+      $errors = [];
+      foreach (libxml_get_errors() as $xmlError) {
+        $errors[] = $xmlError->message;
+      }
+
+      throw new AddInfoException("Validation errors: " . implode(' | ', $errors));
     }
     libxml_use_internal_errors(false);
   }

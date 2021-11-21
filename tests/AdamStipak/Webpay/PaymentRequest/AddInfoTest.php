@@ -25,4 +25,34 @@ class AddInfoTest extends TestCase {
     $this->expectException(AddInfoException::class);
     new AddInfo(file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.4.xsd'), []);
   }
+
+  /**
+   * @dataProvider \AdamStipak\Webpay\PaymentRequest\AddInfoTest::generateCustomValues
+   */
+  public function testSomeCustomValues (array $values) {
+    new AddInfo(file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.4.xsd'), $values);
+    $this->assertTrue(true);
+  }
+
+  public function generateCustomValues () {
+    $minimalValues = AddInfo::createMinimalValues();
+
+    $res = [
+      [
+        array_merge(
+          $minimalValues,
+          [
+            'cardholderInfo' => [
+              'cardholderDetails' => [
+                'name'  => 'John Doe',
+                'email' => 'john.doe@mail.com',
+              ],
+            ],
+          ]
+        ),
+      ],
+    ];
+
+    return $res;
+  }
 }
