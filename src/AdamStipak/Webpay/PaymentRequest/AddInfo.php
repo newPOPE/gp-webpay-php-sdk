@@ -2,10 +2,6 @@
 
 namespace AdamStipak\Webpay\PaymentRequest;
 
-use Nette\Schema\Elements\Structure;
-use Nette\Schema\Expect;
-use Nette\Schema\Processor;
-use Nette\Schema\ValidationException;
 use Spatie\ArrayToXml\ArrayToXml;
 
 class AddInfo {
@@ -15,28 +11,26 @@ class AddInfo {
    */
   private $values;
 
-  public function __construct (array $values) {
-    $this->validate($values);
-    $this->values = $values;
-  }
+  /**
+   * @var string
+   */
+  private $schema;
 
-  private function createSchema (): Structure {
-    return Expect::structure([
-      '_attributes' => Expect::structure([
-        'version' => Expect::string()->required()->pattern('\d{1}\.\d{1}'),
-      ]),
-    ]);
+  public function __construct (string $schema, array $values) {
+    $this->schema = $schema;
+    $this->values = $values;
+    $this->validate($values);
   }
 
   private function validate (array $values) {
-    $processor = new Processor;
+    $dom = new \DOMDocument;
+    $dom->loadXML($this->toXml());
 
-    try {
-      $processor->process($this->createSchema(), $values);
+    libxml_use_internal_errors(true);
+    if (!$dom->schemaValidateSource($this->schema)) {
+      throw new AddInfoException("XML output cannot be validate using the schema.");
     }
-    catch (ValidationException $e) {
-      throw new AddInfoException($e->getMessage(), $e->getCode(), $e);
-    }
+    libxml_use_internal_errors(false);
   }
 
   public function toXml (): string {
@@ -50,11 +44,11 @@ class AddInfo {
     ));
   }
 
-  public static function createWithMinimalConfig (string $version = '4.0'): self {
-    return new self ([
+  public static function createMinimalValues (string $version = '4.0'): array {
+    return [
       '_attributes' => [
         'version' => $version,
       ],
-    ]);
+    ];
   }
 }

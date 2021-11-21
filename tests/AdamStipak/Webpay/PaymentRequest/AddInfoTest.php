@@ -7,7 +7,10 @@ use PHPUnit\Framework\TestCase;
 class AddInfoTest extends TestCase {
 
   public function testMinimalValidSchema () {
-    $info = AddInfo::createWithMinimalConfig();
+    $info = new AddInfo(
+      file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.4.xsd'),
+      AddInfo::createMinimalValues()
+    );
 
     $xml = '<?xml version="1.0"?>
 <additionalInfoRequest xmlns="http://gpe.cz/gpwebpay/additionalInfo/request" version="4.0"/>';
@@ -20,6 +23,6 @@ class AddInfoTest extends TestCase {
 
   public function testMinimalInvalidSchema () {
     $this->expectException(AddInfoException::class);
-    new AddInfo([]);
+    new AddInfo(file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.4.xsd'), []);
   }
 }

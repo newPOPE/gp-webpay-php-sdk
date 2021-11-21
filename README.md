@@ -49,7 +49,13 @@ $api = new \AdamStipak\Webpay\Api(
 use \AdamStipak\Webpay\PaymentRequest;
 use AdamStipak\Webpay\PaymentRequest\AddInfo;
  
-$request = new PaymentRequest(..., AddInfo::createWithMinimalConfig());
+$schema = file_get_contents("Path to XSD schema (GPwebpayAdditionalInfoRequest_v.4.xsd) from portal https://portal.gpwebpay.com/");
+// use minimal valid values for XSD schema
+$addInfo = new AddInfo($schema, AddInfo::createMinimalValues());
+// or you can use valid values against XSD schema (start here AddInfo::createMinimalValues())
+$request = new AddInfo($schema, [...]);
+
+$request = new PaymentRequest(..., $addInfo);
 ```
 
 ### Verify payment response

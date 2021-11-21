@@ -17,11 +17,11 @@
   "require": {
     "php": "~7.4 || ~8.0",
     "ext-openssl": "*",
-    "nette/schema": "^1.2",
+    "ext-dom": "*",
+    "ext-libxml": "*",
     "spatie/array-to-xml": "^2.16"
   },
   "require-dev": {
-    "ext-dom": "*",
     "phpunit/phpunit": "~9.5"
   }
 }
