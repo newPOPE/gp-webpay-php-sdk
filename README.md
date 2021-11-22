@@ -40,11 +40,26 @@ $api = new \AdamStipak\Webpay\Api(
  $url = $api->createPaymentRequestUrl($request); // $api instance of \AdamStipak\Webpay\Api
  
  // use $url as you want. In most cases for redirecting to GP Webpay.
- 
  ```
+
+#### ADDINFO parameter
+
+```php
+// for minimal setup you can use
+use \AdamStipak\Webpay\PaymentRequest;
+use AdamStipak\Webpay\PaymentRequest\AddInfo;
  
+$schema = file_get_contents("Path to XSD schema (GPwebpayAdditionalInfoRequest_v.4.xsd) from portal https://portal.gpwebpay.com/");
+// use minimal valid values for XSD schema
+$addInfo = new AddInfo($schema, AddInfo::createMinimalValues());
+// or you can use valid values against XSD schema (start here AddInfo::createMinimalValues())
+$request = new AddInfo($schema, [...]);
+
+$request = new PaymentRequest(..., $addInfo);
+```
+
 ### Verify payment response
- 
+
 ```php
 use \AdamStipak\Webpay\PaymentResponse;
 use \AdamStipak\Webpay\Exception;
