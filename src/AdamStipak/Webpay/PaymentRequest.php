@@ -39,7 +39,8 @@ class PaymentRequest {
     string $url,
     string $merOrderNumber = null,
     string $md = null,
-    AddInfo $addInfo = null
+    AddInfo $addInfo = null,
+    string $paymentMethod = 'CRD'
   ) {
     $this->params['MERCHANTNUMBER'] = "";
     $this->params['OPERATION'] = 'CREATE_ORDER';
@@ -53,6 +54,7 @@ class PaymentRequest {
     }
 
     $this->params['URL'] = $url;
+    $this->params['PAYMETHOD'] = $paymentMethod;
 
     if ($md !== null) {
       $this->params['MD'] = $md;
