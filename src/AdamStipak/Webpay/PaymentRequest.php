@@ -3,7 +3,6 @@
 namespace AdamStipak\Webpay;
 
 use AdamStipak\Webpay\PaymentRequest\AddInfo;
-use AdamStipak\Webpay\PaymentRequest\PaymentMethod;
 
 /**
  * Payment Requester class
