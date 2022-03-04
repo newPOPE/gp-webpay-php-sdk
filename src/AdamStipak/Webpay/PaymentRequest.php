@@ -17,6 +17,16 @@ class PaymentRequest {
   const RUB = 643;
   const USD = 840;
 
+  const APPLE_PAY = 'APAY';
+  const EPS = 'EPS';
+  const GOOGLE_PAY = 'GPAY';
+  const KLARNA = 'KLARNA';
+  const PAYMENT_CARD = 'CRD';
+  const PAYSAFECARD = 'PAYSAFECARD';
+  const PLATBA_24 = 'BTNCS';
+  const SEPADIRECTDEBIT = 'SEPADIRECTDEBIT';
+  const SOFORT = 'SOFORT';
+
   /** @var array */
   private $params = [];
 
@@ -39,7 +49,8 @@ class PaymentRequest {
     string $url,
     string $merOrderNumber = null,
     string $md = null,
-    AddInfo $addInfo = null
+    AddInfo $addInfo = null,
+    string $paymentMethod = self::PAYMENT_CARD
   ) {
     $this->params['MERCHANTNUMBER'] = "";
     $this->params['OPERATION'] = 'CREATE_ORDER';
@@ -53,6 +64,7 @@ class PaymentRequest {
     }
 
     $this->params['URL'] = $url;
+    $this->params['PAYMETHOD'] = $paymentMethod;
 
     if ($md !== null) {
       $this->params['MD'] = $md;
