@@ -3,6 +3,7 @@
 namespace AdamStipak\Webpay;
 
 use AdamStipak\Webpay\PaymentRequest\AddInfo;
+use AdamStipak\Webpay\PaymentRequest\PaymentMethod;
 
 /**
  * Payment Requester class
@@ -16,6 +17,16 @@ class PaymentRequest {
   const PLN = 985;
   const RUB = 643;
   const USD = 840;
+
+  const APPLE_PAY = 'APAY';
+  const EPS = 'EPS';
+  const GOOGLE_PAY = 'GPAY';
+  const KLARNA = 'KLARNA';
+  const PAYMENT_CARD = 'CRD';
+  const PAYSAFECARD = 'PAYSAFECARD';
+  const PLATBA_24 = 'BTNCS';
+  const SEPADIRECTDEBIT = 'SEPADIRECTDEBIT';
+  const SOFORT = 'SOFORT';
 
   /** @var array */
   private $params = [];
@@ -40,7 +51,7 @@ class PaymentRequest {
     string $merOrderNumber = null,
     string $md = null,
     AddInfo $addInfo = null,
-    string $paymentMethod = 'CRD'
+    string $paymentMethod = self::PAYMENT_CARD
   ) {
     $this->params['MERCHANTNUMBER'] = "";
     $this->params['OPERATION'] = 'CREATE_ORDER';
