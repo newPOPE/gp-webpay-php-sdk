@@ -8,29 +8,29 @@ class AddInfoTest extends TestCase {
 
   public function testMinimalValidSchema () {
     $info = new AddInfo(
-      file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.4.xsd'),
+      file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.5.xsd'),
       AddInfo::createMinimalValues()
     );
 
     $xml = '<?xml version="1.0"?>
-<additionalInfoRequest xmlns="http://gpe.cz/gpwebpay/additionalInfo/request" version="4.0"/>';
+<additionalInfoRequest xmlns="http://gpe.cz/gpwebpay/additionalInfo/request" version="5.0"/>';
     $infoXml = $info->toXml();
     $document = new \DOMDocument();
     $document->loadXML($xml);
     $this->assertEquals($xml, $infoXml);
-    $this->assertTrue($document->schemaValidate(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.4.xsd'));
+    $this->assertTrue($document->schemaValidate(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.5.xsd'));
   }
 
   public function testMinimalInvalidSchema () {
     $this->expectException(AddInfoException::class);
-    new AddInfo(file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.4.xsd'), []);
+    new AddInfo(file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.5.xsd'), []);
   }
 
   /**
    * @dataProvider \AdamStipak\Webpay\PaymentRequest\AddInfoTest::generateCustomValues
    */
   public function testSomeCustomValues (array $values) {
-    new AddInfo(file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.4.xsd'), $values);
+    new AddInfo(file_get_contents(__DIR__ . '/GPwebpayAdditionalInfoRequest_v.5.xsd'), $values);
     $this->assertTrue(true);
   }
 
