@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class PaymentRequestUrlTest extends TestCase {
 
   public function testCreateUrl () {
-    $expectedUrl = "http://test.webpay.com/foo/csob.do?MERCHANTNUMBER=1234&OPERATION=CREATE_ORDER&ORDERNUMBER=1234&AMOUNT=980&CURRENCY=978&DEPOSITFLAG=0&URL=http%3A%2F%2Ffoo.bar&PAYMETHOD=CRD&ADDINFO=%3C%3Fxml+version%3D%221.0%22%3F%3E%0A%3CadditionalInfoRequest+xmlns%3D%22http%3A%2F%2Fgpe.cz%2Fgpwebpay%2FadditionalInfo%2Frequest%22+version%3D%224.0%22%2F%3E&DIGEST=Fb0QQzkPv%2B9MAyvAhVrBjL4LjFv8oq4sQO7iSFZ7ZOgC9loqNgTLfPotUjRxcWFn3y0Dz60VAqcanmL%2FcGp2cAg%2FCqBb1OrvgpWeFECJ1tfyJ9ew7Nqhk4glu8Bs%2FiqH21xHQ0B7k1iglBIL00Xpd%2BOYnv37WHaZRm5i8rTXpGntvdWQx1Rb2SjT47Av1%2BeFz8UGtxorghCM2A0HPyc%2BcJ7qoHZJYrjFiaENBzYTQEh%2BcZaKP%2FxZMGVtEV6HGqgekJfI6oOXBHZJYJ8uMqvBE4OkBgfonbp728EopQSKOLHz7NRj7wNFM%2FNiFzTeaoof3KYq7G5PbcfImDR4LGpzbQ%3D%3D";
+    $expectedUrl = "http://test.webpay.com/foo/csob.do?MERCHANTNUMBER=1234&OPERATION=CREATE_ORDER&ORDERNUMBER=1234&AMOUNT=980&CURRENCY=978&DEPOSITFLAG=0&URL=http%3A%2F%2Ffoo.bar&PAYMETHOD=CRD&ADDINFO=%3C%3Fxml+version%3D%221.0%22%3F%3E%0A%3CadditionalInfoRequest+xmlns%3D%22http%3A%2F%2Fgpe.cz%2Fgpwebpay%2FadditionalInfo%2Frequest%22+version%3D%225.0%22%2F%3E&DIGEST=Hg1hYPs5ty6QYw8wKd1mxbZeELOti2cDbRjAcnkImIbZxway2taEdaJvgUJXOxMw2Ll3hv7dKqwTcTGUb5RrrHY2c%2FhFxFjEDXbMQj%2BhBeTxT6rzTSsTEObMRkvagXLwUkbN7xZu%2Fd940ktjk5PGR%2BNpwftwcp3zi975qkGkXM6%2BLANeW2iRzSuboyC0AiiJEbzFn4ghHOzwwL61tIayD%2FyxNK%2FS1lsaWSiUBOrKxUG5cgAT2UAI6u85PrjFEaCQWuyofAgaFSf2R%2FadrJqAAuEJmlux0gNWWilbgioVF03KwOGUT%2B3tOZS2IDfYbjnkjJFzlqhV5TrBwO9M%2FQN5lw%3D%3D";
 
     $request = new PaymentRequest(
       1234,
@@ -19,7 +19,7 @@ class PaymentRequestUrlTest extends TestCase {
       null,
       null,
       new AddInfo(
-        file_get_contents(__DIR__ . '/AdamStipak/Webpay/PaymentRequest/GPwebpayAdditionalInfoRequest_v.4.xsd'),
+        file_get_contents(__DIR__ . '/AdamStipak/Webpay/PaymentRequest/GPwebpayAdditionalInfoRequest_v.5.xsd'),
         AddInfo::createMinimalValues()
       )
     );
