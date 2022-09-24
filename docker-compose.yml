@@ -1,5 +1,7 @@
-default:
-  build: .docker
-  volumes:
-    - .:/data
-  working_dir: /data
+version: "3.8"
+services:
+  default:
+    build: .docker
+    volumes:
+      - .:/data
+    working_dir: /data
