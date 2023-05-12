@@ -28,7 +28,7 @@ class PaymentRequest {
   const SOFORT = 'SOFORT';
 
   /** @var array */
-  private $params = [];
+  protected $params = [];
 
   /**
    * Payment Requester
