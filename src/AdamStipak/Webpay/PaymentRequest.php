@@ -28,7 +28,7 @@ class PaymentRequest {
   const SOFORT = 'SOFORT';
 
   /** @var array */
-  protected $params = [];
+  private $params = [];
 
   /**
    * Payment Requester
@@ -91,6 +91,15 @@ class PaymentRequest {
    */
   public function getParams (): array {
     return $this->params;
+  }
+  
+  /**
+   * Sets a value for a param key
+   * @param string $key
+   * @param $value
+   */
+  public function setParam($key, $value) {
+    $this->params[$key] = $value;
   }
 
   /**
