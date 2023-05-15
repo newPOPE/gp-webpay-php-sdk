@@ -92,6 +92,15 @@ class PaymentRequest {
   public function getParams (): array {
     return $this->params;
   }
+  
+  /**
+   * Sets a value for a param key
+   * @param string $key
+   * @param $value
+   */
+  public function setParam($key, $value) {
+    $this->params[$key] = $value;
+  }
 
   /**
    * Set The Merchant Number for request
