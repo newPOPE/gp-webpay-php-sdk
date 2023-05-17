@@ -42,7 +42,7 @@ class Api {
   public function createPaymentParam (PaymentRequest $request): array {
     // digest request
     $request->setMerchantNumber($this->merchantNumber);
-    $params = $request->getParams();
+    $params = $request->getSignParams();
     $request->setDigest($this->signer->sign($params));
 
     return $request->getParams();
