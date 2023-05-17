@@ -78,7 +78,7 @@ catch (Exception $e) {
 
 ```
  
-##Development
+## Development
 
 GP Webpay PHP SDK is developed in [Docker](https://docker.com) container via `docker-compose` command.
 
