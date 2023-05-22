@@ -50,7 +50,9 @@ class PaymentRequest {
     string  $merOrderNumber = null,
     string  $md = null,
     AddInfo $addInfo = null,
-    string  $paymentMethod = self::PAYMENT_CARD
+    string  $paymentMethod = self::PAYMENT_CARD,
+    string  $description = null,
+    string  $userparam1 = null
   ) {
     $this->params['MERCHANTNUMBER'] = "";
     $this->params['OPERATION'] = 'CREATE_ORDER';
@@ -64,12 +66,19 @@ class PaymentRequest {
     }
 
     $this->params['URL'] = $url;
-    $this->params['PAYMETHOD'] = $paymentMethod;
 
+    if ($description !== null) {
+      $this->params['DESCRIPTION'] = $description;
+    }
     if ($md !== null) {
       $this->params['MD'] = $md;
     }
+    if ($userparam1 !== null) {
+      $this->params['USERPARAM1'] = $userparam1;
+    }
 
+    $this->params['PAYMETHOD'] = $paymentMethod;
+    
     if ($addInfo !== null) {
       $this->params['ADDINFO'] = $addInfo->toXml();
     }
