@@ -37,9 +37,7 @@ class PaymentResponse {
     if($resulttext !== null){
       $this->params['resulttext'] = $resulttext;
     }
-    
 
-    
     $this->digest = $digest;
     $this->digest1 = $digest1;
   }
