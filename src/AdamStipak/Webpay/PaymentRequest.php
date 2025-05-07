@@ -42,15 +42,15 @@ class PaymentRequest {
    * @param string|null $md Any merchant data.
    */
   public function __construct (
-    int     $orderNumber,
-    float   $amount,
-    int     $currency,
-    int     $depositFlag,
-    string  $url,
-    string  $merOrderNumber = null,
-    string  $md = null,
-    AddInfo $addInfo = null,
-    string  $paymentMethod = self::PAYMENT_CARD
+    int      $orderNumber,
+    float    $amount,
+    int      $currency,
+    int      $depositFlag,
+    string   $url,
+    ?string  $merOrderNumber = null,
+    ?string  $md = null,
+    ?AddInfo $addInfo = null,
+    ?string  $paymentMethod = self::PAYMENT_CARD
   ) {
     $this->params['MERCHANTNUMBER'] = "";
     $this->params['OPERATION'] = 'CREATE_ORDER';
